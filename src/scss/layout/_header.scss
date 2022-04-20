@@ -1,0 +1,42 @@
+.header, .encuentraTuDoctorSection{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 52% 48%;
+    position: relative;
+    overflow: hidden;
+    .descriptionSection{
+        display: grid;
+        align-content: center;
+        padding: 1rem 4rem;
+        h2{
+            font-family: $fuente_primaria;
+            font-size: 4rem;
+            margin: 0;
+        }
+        p{
+            font-family: $fuente_primaria;
+            font-size: 1rem;
+            color: $gris;
+            margin-bottom: 2rem;
+            width: 40rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 0;
+            img{
+                margin-right: 1rem;
+            }
+        }
+        .btn1{
+            width: 12rem;
+        }
+    }
+    .headerDecoration{
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        #doctorHeader{
+            height: 50rem;
+        }
+    }
+}

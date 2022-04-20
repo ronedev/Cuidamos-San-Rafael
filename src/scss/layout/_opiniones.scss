@@ -1,0 +1,120 @@
+.opinionesSectionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    h2{
+        font-family: $fuente_primaria;
+        font-size: 2rem;
+        font-weight: 700;
+        color: $negro;
+    }
+    span{
+        color: $gris;
+        font-family: $fuente_primaria;
+        font-size: 1rem;
+        margin-bottom: 4rem;
+    }
+    .opinionesSlider{
+        .opinion{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            padding: 0 5rem;
+            animation: changeOpacity 1s ease-in-out;
+            .clientImageContainer{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                .rectangleSolid{
+                    width: 400%;
+                    height: 70%;
+                    position: absolute;
+                    top: -5%;
+                    left: -80%;
+                    background-color: #EDF1FF;
+                    z-index: -20;
+                }
+                .image{
+                    width: 30rem;
+                    height: 30rem;
+                    position: relative;
+                    .cuadrado{
+                        width: 80%;
+                        height: 80%;
+                        z-index: -10;
+                        position: absolute;
+                        border: 1px solid $primario;
+                        top: 7%;
+                        left: 8%;
+                        animation: changeSize .5s ease;
+                    }
+                    img{
+                        width: 85%;
+                        animation: changeSize .5s ease;
+                    }
+                }
+            }
+            .clientOpinion{
+                height: 100%;
+                display: grid;
+                align-content: space-evenly;
+                p{
+                    font-family: $fuente_primaria;
+                    color: $negro;
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                }
+                .clientDescriptionAndArrows{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-around;
+                    h4{
+                        font-family: $fuente_primaria;
+                        color: $negro;
+                        font-size: 1.5rem;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes changeSize{
+    0%{
+        transform: scale(0);
+    }
+    25%{
+        transform: scale(.2);
+    }
+    50%{
+        transform: scale(.5);
+    }
+    75%{
+        transform: scale(.75);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+@keyframes changeOpacity{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: .2;
+    }
+    50%{
+        opacity: .5;
+    }
+    75%{
+        opacity: .7;
+    }
+    100%{
+        opacity: 1;
+    }
+}

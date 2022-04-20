@@ -1,0 +1,19 @@
+.reviewSectionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 4rem 0;
+    h3{
+        font-family: $fuente_primaria;
+        color: $negro;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 0;
+    }
+    .reviewGrid{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+    }
+}

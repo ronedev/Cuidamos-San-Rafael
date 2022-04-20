@@ -1,0 +1,59 @@
+.pedirTurnoSectionContainer{
+    height: 100vh;
+    padding: 0 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-content: center;
+    gap: 2rem;
+    .pedirTurnoImageContainer{
+        position: relative;
+        width: 45rem;
+        height: 30rem;
+        img{
+            width: 100%;
+            border-radius: 50rem;
+            height: 100%;
+        }
+        .rectangle1, .rectangle2{
+            height: 100%;
+            width: 100%;
+            border: 1px solid $primario;
+            border-radius: 100rem;
+            position: absolute;
+            z-index: -10;
+        }
+        .rectangle1{
+            top: 2%;
+            left: -2%;
+        }
+        .rectangle2{
+            top: -2%;
+            left: 2%;
+        }
+    }
+    .pedirTurnoDescription{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h3{
+            font-family: $fuente_primaria;
+            color: $negro;
+            font-size: 3rem;
+            margin: 0;
+        }
+        p{
+            display: flex;
+            align-items: center;
+            font-family: $fuente_primaria;
+            font-size: 1rem;
+            color: $gris;
+            img{
+                width: 2rem;
+                margin-right: 1rem;
+            }
+        }
+        .btn1{
+            width: 10rem;
+        }
+    }
+}

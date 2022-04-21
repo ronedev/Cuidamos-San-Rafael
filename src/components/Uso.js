@@ -33,7 +33,7 @@ const Uso = () => {
         }
     ]
     return (
-        <section className='usoSectionContainer'>
+        <section className='usoSectionContainer' id='Uso'>
             <span className='subtitle'>Soluciones rápidas</span>
             <h3>¿Cómo utilizo la página?</h3>
             <div className='usoGrid'>

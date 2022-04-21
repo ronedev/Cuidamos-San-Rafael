@@ -5,10 +5,21 @@
     grid-template-columns: repeat(2, 1fr);
     align-content: center;
     gap: 2rem;
+    @include tablet{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 4rem;
+        align-items: center;
+    }
     .pedirTurnoImageContainer{
         position: relative;
         width: 45rem;
         height: 30rem;
+        @include tablet{
+            width: 25rem;
+            height: 15rem;
+        }
         img{
             width: 100%;
             border-radius: 50rem;

@@ -6,6 +6,11 @@
     position: absolute;
     background-color: $blanco;
     border-radius: 2rem;
+    top: 55%;
+    left: 5%;
+    @include tablet{
+        top: 0%;
+    }
     h3{
         font-family: $fuente_primaria;
         color: $negro;

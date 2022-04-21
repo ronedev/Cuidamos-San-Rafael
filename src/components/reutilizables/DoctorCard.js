@@ -1,12 +1,9 @@
 import React from 'react'
 
 const DoctorCard = ({ doctores }) => {
-  const position = {
-    top: '65%',
-    left: '10%'
-  }
+  
   return (
-    <article className='doctorCardContainer' style={{ 'top': position.top, 'left': position.left }}>
+    <article className='doctorCardContainer' >
       {doctores.length < 2 ?
         <>
           {doctores.map(doctor => <>

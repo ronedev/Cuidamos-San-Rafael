@@ -4,10 +4,18 @@
     grid-template-columns: 52% 48%;
     position: relative;
     overflow: hidden;
+    @include tablet{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
     .descriptionSection{
         display: grid;
         align-content: center;
         padding: 1rem 4rem;
+        @include tablet{
+            padding: 5rem 4rem;
+        }
         h2{
             font-family: $fuente_primaria;
             font-size: 4rem;
@@ -35,8 +43,29 @@
         display: flex;
         align-items: flex-end;
         position: relative;
+        @include tablet{
+            justify-content: flex-end;
+            #doctorHeader, #doctorHeader2{
+                height: 50%;
+                width: 80%;
+            }
+        }
         #doctorHeader{
-            height: 50rem;
+            height: 80%;
+        }
+        #doctorHeader2{
+            height: 60%;
+            align-self: flex-end;
+        }
+    }
+}
+.encuentraTuDoctorSection{
+    .headerDecoration{
+        justify-content: flex-end;
+    }
+    .descriptionSection{
+        h2{
+            min-width: 30rem;
         }
     }
 }

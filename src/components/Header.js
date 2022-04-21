@@ -11,7 +11,7 @@ const Header = () => {
         }
     ]
     return (
-        <header className='header'>
+        <header className='header' id='Home'>
             <section className='descriptionSection'>
                 <h2>Cuidamos San Rafael<br /> Ahora para todos</h2>
                 <p>Màs de 10 años cuidando a los sanrafaelinos. Ahora con servicio web donde se podrán agilizar todos los trámites que normalmente se hacen en la sucursal.</p>

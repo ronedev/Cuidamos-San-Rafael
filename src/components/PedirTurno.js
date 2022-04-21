@@ -3,7 +3,7 @@ import verificadoIcon from './../img/Icons/verificado.png'
 import doctoraPedirTuTurno from './../img/doctoraPedirTuTurno.png'
 const PedirTurno = () => {
     return (
-        <section className='pedirTurnoSectionContainer'>
+        <section className='pedirTurnoSectionContainer' id='Turno'>
             <div className='pedirTurnoImageContainer'>
                 <img src={doctoraPedirTuTurno} alt="doctorsImage" />
                 <div className='rectangle1'></div>

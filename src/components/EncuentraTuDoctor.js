@@ -19,7 +19,7 @@ const EncuentraTuDoctor = () => {
         }
     ]
   return (
-    <section className='encuentraTuDoctorSection'>
+    <section className='encuentraTuDoctorSection' id='Doctor'>
         <section className='descriptionSection'>
             <span className='subtitle'>Encuentra tu doctor</span>
             <h2>Encuentra el doctor acorde a su situación</h2>
@@ -29,7 +29,7 @@ const EncuentraTuDoctor = () => {
             <button className='btn1'>Ver doctores</button>
         </section>
         <div className='headerDecoration'>
-            <img src={doctoraImg} alt="doctoraImage"/>
+            <img src={doctoraImg} alt="doctoraImage" id='doctorHeader2'/>
             <DoctorCard doctores={doctores}/>
         </div>
         <div className='circle'>

@@ -4,6 +4,9 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    @include tablet{
+        height: 100%;
+    }
     h2{
         font-family: $fuente_primaria;
         font-size: 2rem;
@@ -23,11 +26,16 @@
             gap: 3rem;
             padding: 0 5rem;
             animation: changeOpacity 1s ease-in-out;
+            @include tablet{
+                display: flex;
+                flex-direction: column;
+            }
             .clientImageContainer{
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: relative;
+                overflow: hidden;
                 .rectangleSolid{
                     width: 400%;
                     height: 70%;
@@ -41,6 +49,10 @@
                     width: 30rem;
                     height: 30rem;
                     position: relative;
+                    @include tablet{
+                        width: 20rem;
+                        height: 20rem;
+                    }
                     .cuadrado{
                         width: 80%;
                         height: 80%;
@@ -61,11 +73,17 @@
                 height: 100%;
                 display: grid;
                 align-content: space-evenly;
+                @include tablet{
+                    margin-bottom: 4rem;
+                }
                 p{
                     font-family: $fuente_primaria;
                     color: $negro;
                     font-size: 1.8rem;
                     font-weight: 500;
+                    @include tablet{
+                        margin-top: 0;
+                    }
                 }
                 .clientDescriptionAndArrows{
                     display: flex;

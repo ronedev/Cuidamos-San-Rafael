@@ -30,7 +30,7 @@ const Opiniones = () => {
         }
     ]
     return (
-        <section className='opinionesSectionContainer'>
+        <section className='opinionesSectionContainer' id='Review'>
             <h2>¿Qué dicen nuestros pacientes de nostros?</h2>
             <span>Su impresión despues de utilizar la app: </span>
             <div className='opinionesSlider'>

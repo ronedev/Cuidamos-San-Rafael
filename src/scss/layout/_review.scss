@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     margin: 4rem 0;
+    height: 100%;
     h3{
         font-family: $fuente_primaria;
         color: $negro;
@@ -15,5 +16,8 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 4rem;
+        @include tablet{
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 }

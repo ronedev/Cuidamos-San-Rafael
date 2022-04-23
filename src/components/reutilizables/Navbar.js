@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import menuIcon from './../img/Icons/hamburger.png'
-import cerrarIcon from './../img/Icons/cerrar.png'
-import { app } from '../config'
-import Firebase from 'firebase/compat/app'
-import { login, logout } from '../funciones'
+import React, { useState } from 'react'
+import menuIcon from './../../img/Icons/hamburger.png'
+import cerrarIcon from './../../img/Icons/cerrar.png'
+import { login, logout } from '../../funciones'
 
-const Navbar = ({ users }) => {
+const Navbar = ({ users, auth }) => {
     const [menuResponsiveVisible, setMenuResponsiveVisible] = useState(false)
     const [menuResponsiveDesactive, setMenuResponsiveDesactive] = useState(false)
-
-    const [auth, setAuth] = useState(null)
-
-    useEffect(() => {
-        //Se verifica que no haya una sesion iniciada en el cache del navegador
-        app.auth().onAuthStateChanged((usuarioFirebase) => {
-            setAuth(usuarioFirebase)
-        })
-    }, [])
     return (
         <div className='navbarContainer'>
             <div className='navbarLeft'>
@@ -39,14 +28,14 @@ const Navbar = ({ users }) => {
                             <>
                                 <div className='navbarRight'>
                                     <img src={auth.photoURL} alt={auth.dislpayName} />
-                                    <button className='btn2' onClick={()=> logout(app)}>Salir</button>
+                                    <button className='btn2' onClick={()=> logout()}>Salir</button>
                                 </div>
                             </>
                             :
                             <>
                                 <div className='navbarRight'>
-                                    <button className='btn2' onClick={() => login(users, app, Firebase)}>Ingresar</button>
-                                    <button className='btn1' onClick={() => login(users, app, Firebase)}>Crear Cuenta</button>
+                                    <button className='btn2' onClick={() => login(users)}>Ingresar</button>
+                                    <button className='btn1' onClick={() => login(users)}>Crear Cuenta</button>
                                 </div>
                             </>
                         }
@@ -80,14 +69,14 @@ const Navbar = ({ users }) => {
                     <>
                         <div className='navbarRight'>
                             <img src={auth.photoURL} alt={auth.dislpayName} />
-                            <button className='btn2' onClick={()=> logout(app)}>Salir</button>
+                            <button className='btn2' onClick={()=> logout()}>Salir</button>
                         </div>
                     </>
                     :
                     <>
                         <div className='navbarRight'>
-                            <button className='btn2' onClick={() => login(users, app, Firebase)}>Ingresar</button>
-                            <button className='btn1' onClick={() => login(users, app, Firebase)}>Crear Cuenta</button>
+                            <button className='btn2' onClick={() => login(users)}>Ingresar</button>
+                            <button className='btn1' onClick={() => login(users)}>Crear Cuenta</button>
                         </div>
                     </>
                 }

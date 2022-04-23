@@ -1,7 +1,7 @@
 import React from 'react'
-import facebookIcon from './../img/Icons/facebook.png'
-import instagramIcon from './../img/Icons/instagram.png'
-import twitterIcon from './../img/Icons/twitter.png'
+import facebookIcon from './../../img/Icons/facebook.png'
+import instagramIcon from './../../img/Icons/instagram.png'
+import twitterIcon from './../../img/Icons/twitter.png'
 
 const Footer = () => {
     return (
@@ -12,7 +12,6 @@ const Footer = () => {
                     <p>Esta App gratuita da solución a tus necesidades de salud ofreciéndote un acceso único a la información completa sobre varios chequeos médicos Esta aplicación ofrece sugerencias y consejos sencillos para ayudarle a mantener un estilo de vida saludable.</p>
                 </section>
                 <div className='redirectionContainer'>
-
                     <section className='accionesSection'>
                         <h2>Acciones</h2>
                         <ul>

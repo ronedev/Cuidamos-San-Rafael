@@ -10,7 +10,7 @@ const DoctorCard = ({ doctores }) => {
             <img src={doctor.image} alt="DoctorProfile" />
             <h3>Dr. {doctor.name}</h3>
             <span>{doctor.specialty}</span>
-            <button className='btn1'>Pedir turno</button>
+            <button className='btn1' onClick={()=> window.location = '/turno'}>Pedir turno</button>
           </>)}
         </>
         :
@@ -26,7 +26,7 @@ const DoctorCard = ({ doctores }) => {
               </div>
             </div>
           </>)}
-          <button className='btn3'>Encuentre su doctor</button>
+          <button className='btn3' onClick={()=> window.location = '/turno'}>Encuentre su doctor</button>
         </>
       }
     </article>

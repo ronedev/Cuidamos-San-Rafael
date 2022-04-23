@@ -1,6 +1,6 @@
 import React from 'react'
-import verificadoIcon from './../img/Icons/verificado.png'
-import doctoraPedirTuTurno from './../img/doctoraPedirTuTurno.png'
+import verificadoIcon from './../../img/Icons/verificado.png'
+import doctoraPedirTuTurno from './../../img/doctoraPedirTuTurno.png'
 const PedirTurno = () => {
     return (
         <section className='pedirTurnoSectionContainer' id='Turno'>
@@ -15,7 +15,7 @@ const PedirTurno = () => {
                 <p>Pedir tus turnos al médico nunca fue tan fácil. No importa distancia o problemas de movilidad, Cuidamos San Rafael está para vos.</p>
                 <p><img src={verificadoIcon} alt="verificadoIcon" /> Pedir tu turno online es sencillo</p>
                 <p><img src={verificadoIcon} alt="verificadoIcon" /> Fácil y rápido contacto con tu doctor</p>
-                <button className='btn1'>Pide tu turno</button>
+                <button className='btn1' onClick={()=> window.location = '/turno'}>Pide tu turno</button>
             </section>
         </section>
     )

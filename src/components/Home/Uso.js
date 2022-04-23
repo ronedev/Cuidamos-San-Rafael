@@ -1,9 +1,9 @@
 import React from 'react'
-import searchIcon from './../img/Icons/search.png'
-import profileIcon from './../img/Icons/profile.png'
-import calendarIcon from './../img/Icons/calendar.png'
-import starIcon from './../img/Icons/star.png'
-import InfoCard from './reutilizables/InfoCard'
+import searchIcon from './../../img/Icons/search.png'
+import profileIcon from './../../img/Icons/profile.png'
+import calendarIcon from './../../img/Icons/calendar.png'
+import starIcon from './../../img/Icons/star.png'
+import InfoCard from './../reutilizables/InfoCard'
 
 const Uso = () => {
     const usoInfo = [

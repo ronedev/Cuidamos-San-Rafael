@@ -1,7 +1,7 @@
 import React from 'react'
-import doctoraImg from './../img/doctoraHome.png'
-import DoctorCard from './reutilizables/DoctorCard'
-import doctorProfile from './../img/doctoraProfile.png'
+import doctoraImg from './../../img/doctoraHome.png'
+import DoctorCard from './../reutilizables/DoctorCard'
+import doctorProfile from './../../img/doctoraProfile.png'
 const Header = () => {
     const doctor = [
         {

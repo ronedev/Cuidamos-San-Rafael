@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import paciente1 from './../img/paciente1.png'
-import paciente3 from './../img/paciente3.png'
-import paciente2 from './../img/paciente2.png'
-import leftArrow from './../img/Icons/left.png'
-import rightArrow from './../img/Icons/right.png'
+import paciente1 from './../../img/paciente1.png'
+import paciente3 from './../../img/paciente3.png'
+import paciente2 from './../../img/paciente2.png'
+import leftArrow from './../../img/Icons/left.png'
+import rightArrow from './../../img/Icons/right.png'
 
 const Opiniones = () => {
 

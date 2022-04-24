@@ -1,0 +1,76 @@
+.sectionFormTurnero{
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: slideInRight 1s ease-in-out;
+    h3{
+        font-family: $fuente_primaria;
+        font-size: 2rem;
+    }
+    p{
+        font-family: $fuente_primaria;
+        font-size: 1.2rem;
+        color: $gris;
+        width: 20rem;
+        text-align: center;
+        margin: 0 0 2rem 0;
+    }
+    &.especialistaSection{
+        animation: slideInLeft 1s ease-in-out;
+    }
+}
+.especialistasCardContainer{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    @include tablet{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.especialistaCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    box-shadow: 1rem 1rem .9rem -.1rem rgba(0, 0, 0, .35);
+    h2{
+        font-family: $fuente_primaria;
+        font-size: 1.5rem;
+    }
+    &.seleccionado{
+        background-color: $primario;
+        h2,span{
+            color: $blanco;
+        }
+    }
+}
+
+@keyframes slideInRight{
+    from{
+        margin-left: 100%;
+        width: 300%;
+    }
+    to{
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+@keyframes slideInLeft{
+    from{
+        margin-right: 100%;
+        width: 300%;
+    }
+    to{
+        margin-right: 0%;
+        width: 100%;
+    }
+}

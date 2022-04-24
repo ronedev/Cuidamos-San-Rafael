@@ -18,21 +18,23 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
     const [especialistaElegido, setEspecialistaElegido] = useState(null)
 
     const [selectedDate, handleDateChange] = useState(new Date())
-    const [erroresDate, setErroresDate] =  useState([])
+    const [erroresDate, setErroresDate] = useState([])
 
     const [turnoAprobado, setTurnoAprobado] = useState(false)
+    console.log(selectedDate)
 
-    const pedirTurno = async (e)=>{
+    const pedirTurno = async (e) => {
         e.preventDefault()
         setErroresDate([])
         //Se valida que el dia ingresado no sea ni Sabado (0) ni Domingo (1)
-        if(selectedDate.getUTCDay() !== 1 && selectedDate.getUTCDay() !== 0){
+        if (selectedDate.getUTCDay() !== 1 && selectedDate.getUTCDay() !== 0) {
             //Se valida que la hora ingresada este dentro del horario de atención
-            if((selectedDate.getHours() >= 9 && selectedDate.getHours() <= 12) || (selectedDate.getHours() >= 17 && selectedDate.getHours() <= 20)){
+            console.log('hora bien')
+            if ((selectedDate.getHours() >= 9 && selectedDate.getHours() <= 12) || (selectedDate.getHours() >= 17 && selectedDate.getHours() <= 20)) {
                 let turnosEspecialista = turnos.filter(turno => turno.doctorId === especialistaElegido)
-                turnosEspecialista.every(turno =>{
+                turnosEspecialista.every(turno => {
                     //Se valida que la fecha y hora ingresada este disponible
-                    if(selectedDate.toLocaleDateString() === turno.date && selectedDate.toLocaleTimeString() === turno.time){
+                    if (selectedDate.toLocaleDateString() === turno.date && selectedDate.toLocaleTimeString() === turno.time) {
                         //Se filtra el especialista para obtener su nombre mediante su id
                         let especialista = especialistas.filter(doctor => doctor.id === especialistaElegido)
 
@@ -40,33 +42,34 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
                         return false
                     }
                 })
-                if(auth){
-                    if(erroresDate.length === 0){
+                if (auth) {
+                    if (erroresDate.length === 0) {
                         await app.firestore().collection(`especialistas/${especialistaElegido}/turnos`).doc().set({
                             doctorId: especialistaElegido,
-                            patient:  auth.displayName,
+                            patient: auth.displayName,
                             patientId: auth.uid,
                             date: selectedDate.toLocaleDateString(),
                             time: selectedDate.toLocaleTimeString()
                         })
                         setTurnoAprobado(true)
                     }
-                }else{
+                } else {
                     setErroresDate(erroresDate => [...erroresDate, 'Debe ingresar a su cuenta para pedir un turno'])
                 }
-            }else{
+            } else {
                 setErroresDate(erroresDate => [...erroresDate, 'Seleccione un horario de atencion de 9 a 12 ó de 17 a 20'])
             }
-        }else{
+        } else {
             setErroresDate(erroresDate => [...erroresDate, 'Los especialistas no estan disponibles ni Sabados, ni Domingos'])
         }
     }
 
     return (
-        <form>
-            {turnoAprobado ? <Alert severity='success' onClick={()=> setTurnoAprobado(false)}>Se ha aprobado su solicitud de turno, en breve recibirá confirmación a su email</Alert> : ''}
-            <section>
+        <form className='formContainer'>
+            {turnoAprobado ? <Alert severity='success' onClick={() => setTurnoAprobado(false)}>Se ha aprobado su solicitud de turno, en breve recibirá confirmación a su email</Alert> : ''}
+            <section className='sectionFormTurnero'>
                 <h3>¿Que especialista estas buscando?</h3>
+                <p>En base a sus dolencias o molestias seleccione el especialista que corresponda</p>
                 <Autocomplete
                     disablePortal
                     options={especialidades}
@@ -74,56 +77,62 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
                     renderInput={(params) => <TextField {...params} label="Especialidad.." onChange={(e) => setEspecialidadElegida(e.target.value)} />}
                     onInputChange={(e) => setEspecialidadElegida(e.target.textContent)}
                 />
+                <span className='line'></span>
                 {
                     especialidades.includes(especialidadElegida) ?
-                        <section>
-                            <h3>Seleccione el especialista que desea</h3>
-                            {especialistas.map(especialista => {
-                                if (especialista.speciality === especialidadElegida) {
-                                    return (
-                                        <>
-                                            <div className='especialistaCard' onClick={() => setEspecialistaElegido(especialista.id)}>
-                                                <div className='especialistaTop'>
-                                                    <h2>Dr. {especialista.name}</h2>
+                        <>
+                            <section className='sectionFormTurnero especialistaSection'>
+                                <h3>Seleccione el especialista que desea</h3>
+                                <p>Contamos con un extenso numero de especialistas altamente capacitados</p>
+                                <div className='especialistasCardContainer'>
+                                    {especialistas.map(especialista => {
+                                        if (especialista.speciality === especialidadElegida) {
+                                            return (
+                                                <div className={especialistaElegido === especialista.id ? 'especialistaCard seleccionado' : 'especialistaCard'} onClick={() => setEspecialistaElegido(especialista.id)}>
                                                     <img src={especialista.img} alt="especialistaImage" />
+                                                    <h2>Dr. {especialista.name}</h2>
+                                                    <span className='subtitle'>{especialista.speciality}</span>
                                                 </div>
-                                                <span className='subtitle'>{especialista.speciality}</span>
-                                            </div>
-                                        </>
-                                    )
-                                }
-                            })}
-                        </section>
+                                            )
+                                        }
+                                    })}
+                                </div>
+                            </section>
+                            <span className='line'></span>
+                        </>
                         :
                         <>
                             {/* No se ejecuta nada */}
                         </>
                 }
-                {especialistaElegido !== null ?
+                {(especialistaElegido !== null && especialidades.includes(especialidadElegida)) ?
                     <>
-                        <section>
+                        <section className='sectionFormTurnero'>
                             <h3>Seleccione la fecha y hora de su turno</h3>
+                            <p>Tener en cuenta el horario: Lunes a Viernes de 9 a 12 y por la tarde de 17 a 21hrs.</p>
                             {erroresDate.length > 0 ?
-                            <>
-                                {erroresDate.forEach(error =>{
-                                    return(
-                                        <>
-                                            <Alert severity='error'>{error}</Alert>
-                                        </>
-                                    )
-                                })}
-                            </>
-                            :
-                            <>
-                                {/* no se ejecuta nada */}
-                            </>}
+                                <>
+                                    {erroresDate.forEach(error => {
+                                        return (
+                                            <>
+                                                <Alert severity='error'>{error}</Alert>
+                                                <p>error</p>
+                                            </>
+                                        )
+                                    })}
+                                </>
+                                :
+                                <>
+                                    {/* no se ejecuta nada */}
+                                </>}
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DatePicker value={selectedDate} disablePast onChange={handleDateChange} />
-                                <TimePicker value={selectedDate} disablePast onChange={handleDateChange} />
-                                <DateTimePicker value={selectedDate} disablePast onChange={handleDateChange} />
+                                <DatePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime'/>
+                                <TimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime'/>
+                                <DateTimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime'/>
                             </MuiPickersUtilsProvider>
-                            <button className='btn1' onClick={(e)=> pedirTurno(e)}>Pedir Turno</button>
+                            <button className='btn1' onClick={(e) => pedirTurno(e)} id='inputTime'>Pedir Turno</button>
                         </section>
+                        <span className='line'></span>
                     </>
                     :
                     <>

@@ -54,6 +54,7 @@ function App() {
             <>
               <Navbar users={users} auth={auth} />
               <Turnero especialidades={especialidades} especialistas={especialistas} auth={auth} turnos={turnos} />
+              <Footer />
             </>
           } />
         </Routes>

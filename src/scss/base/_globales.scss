@@ -60,6 +60,13 @@ body {
   z-index: -2;
   overflow: hidden;
 }
+.line{
+  background-color: $grisClaro;
+  height: .1rem;
+  width: 100vw;
+  margin: 0;
+  margin-top: 2rem;
+}
 .subtitle{
   font-family: $fuente_primaria;
   color: $primario;

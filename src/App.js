@@ -7,10 +7,10 @@ import Opiniones from './components/Home/Opiniones';
 import PedirTurno from './components/Home/PedirTurno';
 import Review from './components/Home/Review';
 import Uso from './components/Home/Uso';
+import Turnero from './components/Turno/Turnero';
 import './scss/App.scss';
 import { app } from './config';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Turnero from './components/Turno/Turnero';
 import { getUsers, getEspecialistas, getEspecialidades, getTurnos } from './funciones'
 
 function App() {
@@ -41,9 +41,9 @@ function App() {
           <Route path='/' element={
             <>
               <Navbar users={users} auth={auth} />
-              <Header />
+              <Header especialistas={especialistas}/>
               <Uso />
-              <EncuentraTuDoctor />
+              <EncuentraTuDoctor especialistas={especialistas}/>
               <PedirTurno />
               <Review />
               <Opiniones />

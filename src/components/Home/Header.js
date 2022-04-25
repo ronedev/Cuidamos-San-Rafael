@@ -1,15 +1,14 @@
 import React from 'react'
-import doctoraImg from './../../img/doctoraHome.png'
+import doctoraImg from './../../img/doctoraHome.webp'
 import DoctorCard from './../reutilizables/DoctorCard'
-import doctorProfile from './../../img/doctoraProfile.png'
-const Header = () => {
-    const doctor = [
-        {
-            name: 'Shimanta',
-            specialty: 'Dermatólogo',
-            image: doctorProfile
-        }
-    ]
+const Header = ({especialistas}) => {
+    //Se elige un especialista random
+    const doctor = []
+    if(especialistas.length > 0){
+        const randomIndex = Math.floor(Math.random()*especialistas.length)
+        doctor.push(especialistas[randomIndex])
+        console.log(doctor)
+    }
     return (
         <header className='header' id='Home'>
             <section className='descriptionSection'>

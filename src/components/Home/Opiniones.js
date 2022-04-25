@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import paciente1 from './../../img/paciente1.png'
-import paciente3 from './../../img/paciente3.png'
-import paciente2 from './../../img/paciente2.png'
+import paciente1 from './../../img/paciente1.webp'
+import paciente3 from './../../img/paciente3.webp'
+import paciente2 from './../../img/paciente2.webp'
 import leftArrow from './../../img/Icons/left.png'
 import rightArrow from './../../img/Icons/right.png'
 

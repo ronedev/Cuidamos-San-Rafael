@@ -1,13 +1,12 @@
 import React from 'react'
 
 const DoctorCard = ({ doctores }) => {
-  
   return (
     <article className='doctorCardContainer' >
       {doctores.length < 2 ?
         <>
           {doctores.map(doctor => <>
-            <img src={doctor.image} alt="DoctorProfile" />
+            <img src={doctor.img} alt="DoctorProfile" />
             <h3>Dr. {doctor.name}</h3>
             <span>{doctor.specialty}</span>
             <button className='btn1' onClick={()=> window.location = '/turno'}>Pedir turno</button>
@@ -19,7 +18,7 @@ const DoctorCard = ({ doctores }) => {
           <span>Encuentre su especialista</span>
           {doctores.map(doctor => <>
             <div className='doctorContainer'>
-              <img src={doctor.image} alt="DoctorProfile" />
+              <img src={doctor.img} alt="DoctorProfile" />
               <div className='doctorData'>
                 <h3>{doctor.name}</h3>
                 <span>{doctor.specialty}</span>

@@ -9,7 +9,7 @@ import {
     DateTimePicker,
     MuiPickersUtilsProvider,
 } from '@material-ui/pickers';
-import { Alert } from '@mui/material';
+import Alert from '@mui/material/Alert';
 import { app } from '../../config';
 
 const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
@@ -21,7 +21,6 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
     const [erroresDate, setErroresDate] = useState([])
 
     const [turnoAprobado, setTurnoAprobado] = useState(false)
-    console.log(selectedDate)
 
     const pedirTurno = async (e) => {
         e.preventDefault()
@@ -29,7 +28,6 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
         //Se valida que el dia ingresado no sea ni Sabado (0) ni Domingo (1)
         if (selectedDate.getUTCDay() !== 1 && selectedDate.getUTCDay() !== 0) {
             //Se valida que la hora ingresada este dentro del horario de atención
-            console.log('hora bien')
             if ((selectedDate.getHours() >= 9 && selectedDate.getHours() <= 12) || (selectedDate.getHours() >= 17 && selectedDate.getHours() <= 20)) {
                 let turnosEspecialista = turnos.filter(turno => turno.doctorId === especialistaElegido)
                 turnosEspecialista.every(turno => {
@@ -40,22 +38,23 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
 
                         setErroresDate(erroresDate => [...erroresDate, `El doctor ${especialista[0].name} ya tiene un turno para esta fecha y hora, por favor intentelo de nuevo`])
                         return false
+                    }else{
+                        if (auth) {
+                            if (erroresDate.length === 0) {
+                                app.firestore().collection(`especialistas/${especialistaElegido}/turnos`).doc().set({
+                                    doctorId: especialistaElegido,
+                                    patient: auth.displayName,
+                                    patientId: auth.uid,
+                                    date: selectedDate.toLocaleDateString(),
+                                    time: selectedDate.toLocaleTimeString()
+                                })
+                                setTurnoAprobado(true)
+                            }
+                        } else {
+                            setErroresDate(erroresDate => [...erroresDate, 'Debe ingresar a su cuenta para pedir un turno'])
+                        }
                     }
                 })
-                if (auth) {
-                    if (erroresDate.length === 0) {
-                        await app.firestore().collection(`especialistas/${especialistaElegido}/turnos`).doc().set({
-                            doctorId: especialistaElegido,
-                            patient: auth.displayName,
-                            patientId: auth.uid,
-                            date: selectedDate.toLocaleDateString(),
-                            time: selectedDate.toLocaleTimeString()
-                        })
-                        setTurnoAprobado(true)
-                    }
-                } else {
-                    setErroresDate(erroresDate => [...erroresDate, 'Debe ingresar a su cuenta para pedir un turno'])
-                }
             } else {
                 setErroresDate(erroresDate => [...erroresDate, 'Seleccione un horario de atencion de 9 a 12 ó de 17 a 20'])
             }
@@ -66,7 +65,6 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
 
     return (
         <form className='formContainer'>
-            {turnoAprobado ? <Alert severity='success' onClick={() => setTurnoAprobado(false)}>Se ha aprobado su solicitud de turno, en breve recibirá confirmación a su email</Alert> : ''}
             <section className='sectionFormTurnero'>
                 <h3>¿Que especialista estas buscando?</h3>
                 <p>En base a sus dolencias o molestias seleccione el especialista que corresponda</p>
@@ -110,28 +108,29 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
                         <section className='sectionFormTurnero'>
                             <h3>Seleccione la fecha y hora de su turno</h3>
                             <p>Tener en cuenta el horario: Lunes a Viernes de 9 a 12 y por la tarde de 17 a 21hrs.</p>
-                            {erroresDate.length > 0 ?
-                                <>
-                                    {erroresDate.forEach(error => {
-                                        return (
-                                            <>
-                                                <Alert severity='error'>{error}</Alert>
-                                                <p>error</p>
-                                            </>
-                                        )
-                                    })}
-                                </>
-                                :
-                                <>
-                                    {/* no se ejecuta nada */}
-                                </>}
                             <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DatePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime'/>
-                                <TimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime'/>
-                                <DateTimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime'/>
+                                <DatePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
+                                <TimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
+                                <DateTimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
                             </MuiPickersUtilsProvider>
-                            <button className='btn1' onClick={(e) => pedirTurno(e)} id='inputTime'>Pedir Turno</button>
+                            <button className='btn1' onClick={(e) => pedirTurno(e)}>Pedir Turno</button>
                         </section>
+                        {console.log(erroresDate.length)}
+                        {erroresDate.length >= 1 ?
+                            <>
+                                {erroresDate.map(error => {
+                                    return (
+                                        <>
+                                            <Alert severity='error' onClick={()=> setErroresDate([])}>{error}</Alert>
+                                        </>
+                                    )
+                                })}
+                            </>
+                            :
+                            <>
+                                {/* no se ejecuta nada */}
+                            </>}
+                        {turnoAprobado ? <Alert severity='success' onClick={() => setTurnoAprobado(false)}>Se ha aprobado su solicitud de turno, en breve recibirá confirmación a su email</Alert> : ''}
                         <span className='line'></span>
                     </>
                     :

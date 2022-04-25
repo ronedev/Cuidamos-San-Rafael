@@ -1,23 +1,16 @@
 import React from 'react'
 import verificadoIcon from './../../img/Icons/verificado.png'
-import doctoraImg from './../../img/doctoraEncuentraTuDoctor.png'
+import doctoraImg from './../../img/doctoraEncuentraTuDoctor.webp'
 import DoctorCard from './../reutilizables/DoctorCard'
-import adindaProfile from './../../img/adindaProfile.png'
-import jacksonProfile from './../../img/jacksonProfile.png'
 
-const EncuentraTuDoctor = () => {
-    const doctores = [
-        {
-            name: 'Adinda',
-            specialty: 'Oftamólogo',
-            image: adindaProfile
-        },
-        {
-            name: 'Jackson',
-            specialty: 'Odontólogo',
-            image: jacksonProfile
+const EncuentraTuDoctor = ({especialistas}) => {
+    const doctores = []
+    if(especialistas.length > 0){
+        for (let index = 0; index < 2; index++) {
+            const randomIndex = Math.floor(Math.random()*especialistas.length)
+            doctores.push(especialistas[randomIndex])
         }
-    ]
+    }
   return (
     <section className='encuentraTuDoctorSection' id='Doctor'>
         <section className='descriptionSection'>

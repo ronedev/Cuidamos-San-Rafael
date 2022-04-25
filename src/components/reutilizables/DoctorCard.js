@@ -20,7 +20,7 @@ const DoctorCard = ({ doctores }) => {
             <div className='doctorContainer'>
               <img src={doctor.img} alt="DoctorProfile" />
               <div className='doctorData'>
-                <h3>{doctor.name}</h3>
+                <h3>Dr. {doctor.name}</h3>
                 <span>{doctor.specialty}</span>
               </div>
             </div>

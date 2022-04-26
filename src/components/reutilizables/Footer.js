@@ -1,7 +1,7 @@
 import React from 'react'
-import facebookIcon from './../../img/Icons/facebook.png'
-import instagramIcon from './../../img/Icons/instagram.png'
-import twitterIcon from './../../img/Icons/twitter.png'
+import facebookIcon from 'img/Icons/facebook.png'
+import instagramIcon from 'img/Icons/instagram.png'
+import twitterIcon from 'img/Icons/twitter.png'
 
 const Footer = () => {
     return (

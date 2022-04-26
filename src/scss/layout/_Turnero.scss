@@ -20,6 +20,15 @@
     &.especialistaSection{
         animation: slideInLeft 1s ease-in-out;
     }
+    .inputsContainer{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 2rem 0;
+    }
+    button{
+        width: 100%;
+    }
 }
 .especialistasCardContainer{
     display: grid;

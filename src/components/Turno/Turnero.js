@@ -25,8 +25,8 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
     const pedirTurno = async (e) => {
         e.preventDefault()
         setErroresDate([])
-        //Se valida que el dia ingresado no sea ni Sabado (0) ni Domingo (1)
-        if (selectedDate.getUTCDay() !== 1 && selectedDate.getUTCDay() !== 0) {
+        //Se valida que el dia ingresado no sea ni Sabado (6) ni Domingo (1)
+        if (selectedDate.getUTCDay() !== 6 && selectedDate.getUTCDay() !== 0) {
             //Se valida que la hora ingresada este dentro del horario de atención
             if ((selectedDate.getHours() >= 9 && selectedDate.getHours() <= 12) || (selectedDate.getHours() >= 17 && selectedDate.getHours() <= 20)) {
                 let turnosEspecialista = turnos.filter(turno => turno.doctorId === especialistaElegido)
@@ -38,7 +38,7 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
 
                         setErroresDate(erroresDate => [...erroresDate, `El doctor ${especialista[0].name} ya tiene un turno para esta fecha y hora, por favor intentelo de nuevo`])
                         return false
-                    }else{
+                    } else {
                         if (auth) {
                             if (erroresDate.length === 0) {
                                 app.firestore().collection(`especialistas/${especialistaElegido}/turnos`).doc().set({
@@ -77,7 +77,7 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
                 />
                 <span className='line'></span>
                 {
-                    especialidades.includes(especialidadElegida) ?
+                    especialidades.includes(especialidadElegida) &&
                         <>
                             <section className='sectionFormTurnero especialistaSection'>
                                 <h3>Seleccione el especialista que desea</h3>
@@ -98,44 +98,35 @@ const Turnero = ({ especialidades, especialistas, auth, turnos }) => {
                             </section>
                             <span className='line'></span>
                         </>
-                        :
-                        <>
-                            {/* No se ejecuta nada */}
-                        </>
                 }
-                {(especialistaElegido !== null && especialidades.includes(especialidadElegida)) ?
+                {(especialistaElegido !== null && especialidades.includes(especialidadElegida)) &&
                     <>
                         <section className='sectionFormTurnero'>
                             <h3>Seleccione la fecha y hora de su turno</h3>
                             <p>Tener en cuenta el horario: Lunes a Viernes de 9 a 12 y por la tarde de 17 a 21hrs.</p>
-                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                <DatePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
-                                <TimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
-                                <DateTimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
-                            </MuiPickersUtilsProvider>
+                            <div className='inputsContainer'>
+                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                    <DatePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
+                                    <TimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
+                                    <DateTimePicker value={selectedDate} disablePast onChange={handleDateChange} id='inputTime' />
+                                </MuiPickersUtilsProvider>
+                            </div>
                             <button className='btn1' onClick={(e) => pedirTurno(e)}>Pedir Turno</button>
                         </section>
                         {console.log(erroresDate.length)}
-                        {erroresDate.length >= 1 ?
+                        {erroresDate.length >= 1 &&
                             <>
                                 {erroresDate.map(error => {
                                     return (
                                         <>
-                                            <Alert severity='error' onClick={()=> setErroresDate([])}>{error}</Alert>
+                                            <Alert severity='error' onClick={() => setErroresDate([])}>{error}</Alert>
                                         </>
                                     )
                                 })}
                             </>
-                            :
-                            <>
-                                {/* no se ejecuta nada */}
-                            </>}
-                        {turnoAprobado ? <Alert severity='success' onClick={() => setTurnoAprobado(false)}>Se ha aprobado su solicitud de turno, en breve recibirá confirmación a su email</Alert> : ''}
+                        }
+                        {turnoAprobado && <Alert severity='success' onClick={() => setTurnoAprobado(false)}>Se ha aprobado su solicitud de turno, en breve recibirá confirmación a su email</Alert>}
                         <span className='line'></span>
-                    </>
-                    :
-                    <>
-                        {/* No se ejecuta nada */}
                     </>
                 }
             </section>

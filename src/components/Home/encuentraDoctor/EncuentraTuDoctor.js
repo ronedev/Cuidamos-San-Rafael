@@ -1,16 +1,9 @@
 import React from 'react'
-import verificadoIcon from './../../img/Icons/verificado.png'
-import doctoraImg from './../../img/doctoraEncuentraTuDoctor.webp'
-import DoctorCard from './../reutilizables/DoctorCard'
+import verificadoIcon from 'img/Icons/verificado.png'
+import doctoraImg from 'img/doctoraEncuentraTuDoctor.webp'
+import DoctorCard from '../../reutilizables/DoctorCard'
 
-const EncuentraTuDoctor = ({especialistas}) => {
-    const doctores = []
-    if(especialistas.length > 0){
-        for (let index = 0; index < 2; index++) {
-            const randomIndex = Math.floor(Math.random()*especialistas.length)
-            doctores.push(especialistas[randomIndex])
-        }
-    }
+const EncuentraTuDoctor = ({doctores}) => {
   return (
     <section className='encuentraTuDoctorSection' id='Doctor'>
         <section className='descriptionSection'>

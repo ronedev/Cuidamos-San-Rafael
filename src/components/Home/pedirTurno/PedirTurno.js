@@ -1,6 +1,6 @@
 import React from 'react'
-import verificadoIcon from './../../img/Icons/verificado.png'
-import doctoraPedirTuTurno from './../../img/doctoraPedirTuTurno.webp'
+import verificadoIcon from 'img/Icons/verificado.png'
+import doctoraPedirTuTurno from 'img/doctoraPedirTuTurno.webp'
 const PedirTurno = () => {
     return (
         <section className='pedirTurnoSectionContainer' id='Turno'>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import EncuentraTuDoctor from './components/Home/EncuentraTuDoctor';
+import LazyEncuentraDoctor from 'components/Home/encuentraDoctor/LazyEncuentraDoctor';
 import Footer from './components/reutilizables/Footer';
 import Header from './components/Home/Header';
 import Navbar from './components/reutilizables/Navbar';
-import Opiniones from './components/Home/Opiniones';
-import PedirTurno from './components/Home/PedirTurno';
+import LazyOpiniones from 'components/Home/opiniones/LazyOpiniones';
+import LazyPedirTurno from 'components/Home/pedirTurno/LazyPedirTurno';
 import Review from './components/Home/Review';
 import Uso from './components/Home/Uso';
 import Turnero from './components/Turno/Turnero';
@@ -43,10 +43,10 @@ function App() {
               <Navbar users={users} auth={auth} />
               <Header especialistas={especialistas}/>
               <Uso />
-              <EncuentraTuDoctor especialistas={especialistas}/>
-              <PedirTurno />
+              <LazyEncuentraDoctor especialistas={especialistas} />
+              <LazyPedirTurno />
               <Review />
-              <Opiniones />
+              <LazyOpiniones />
               <Footer />
             </>
           } />

@@ -1,5 +1,6 @@
 import { useNearScreen } from 'components/Hooks/useNearScreen'
 import React, { Suspense, useRef } from 'react'
+import EncuentraTuDoctorPlaceholder from './EncuentraTuDoctorPlaceholder'
 
 const LazyEncuentraDoctor = ({ especialistas }) => {
     const elementRef = useRef()
@@ -18,8 +19,8 @@ const LazyEncuentraDoctor = ({ especialistas }) => {
     )
     return (
         <div ref={elementRef}>
-            <Suspense fallback={'cargando...'}>
-                {isNearScreen ? <EncuentraTuDoctor doctores={doctores} /> : null}
+            <Suspense fallback={ <div style={{width: '100%'}}> <EncuentraTuDoctorPlaceholder /> </div> }>
+                {isNearScreen ? <EncuentraTuDoctor doctores={doctores} /> : <div style={{width: '100%'}}> <EncuentraTuDoctorPlaceholder /> </div>}
             </Suspense>
         </div>
     )

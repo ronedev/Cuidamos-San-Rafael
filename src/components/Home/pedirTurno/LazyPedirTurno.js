@@ -1,5 +1,6 @@
 import { useNearScreen } from 'components/Hooks/useNearScreen'
 import React, { Suspense, useRef } from 'react'
+import PedirTurnoPlaceholder from './PedirTurnoPlaceholder'
 
 const LazyPedirTurno = () => {
     const elementRef = useRef()
@@ -10,8 +11,8 @@ const LazyPedirTurno = () => {
     )
     return (
     <div ref={elementRef}>
-        <Suspense fallback={'cargando...'}>
-            {isNearScreen ? <PedirTurno /> : null}
+        <Suspense fallback={ <div style={{width: '100%'}}> <PedirTurnoPlaceholder /> </div> }>
+            {isNearScreen ? <PedirTurno /> : <div style={{width: '100%'}}> <PedirTurnoPlaceholder /> </div>}
         </Suspense>
     </div>
   )

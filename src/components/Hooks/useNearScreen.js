@@ -26,5 +26,6 @@ export const useNearScreen = ({elementRef}) => {
         })
         return () => observer && observer.disconnect()
     })
+    
     return isNearScreen
 }

@@ -1,6 +1,5 @@
 .header, .encuentraTuDoctorSection{
     min-height: 100vh;
-    max-height: 100vh;
     display: grid;
     grid-template-columns: 52% 48%;
     position: relative;
@@ -16,25 +15,32 @@
         align-content: center;
         padding: 1rem 4rem;
         @include tablet{
-            padding: 12rem 4rem;
+            padding: 5rem 4rem;
         }
         h2{
             font-family: $fuente_primaria;
             font-size: 4rem;
             margin: 0;
+            width: 80%;
+            @include tablet{
+                font-size: 3rem;
+            }
         }
         p{
             font-family: $fuente_primaria;
             font-size: 1rem;
             color: $gris;
             margin-bottom: 2rem;
-            width: 40rem;
+            width: 70%;
             display: flex;
             align-items: center;
             justify-content: flex-start;
             margin-top: 0;
             img{
                 margin-right: 1rem;
+            }
+            @include tablet{
+                font-size: .8rem;
             }
         }
         .btn1{
@@ -70,7 +76,7 @@
             max-width: 30rem;
         }
         @include tablet{
-            padding: 5rem 2rem;
+            padding: 0 2rem 5rem 2rem;
         }
     }
 }

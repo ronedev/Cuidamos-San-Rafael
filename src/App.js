@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
+import LazyNavbar from 'components/reutilizables/navbar/LazyNavbar';
+import LazyHeader from 'components/Home/header/LazyHeader';
+import LazyUso from 'components/Home/uso/LazyUso';
 import LazyEncuentraDoctor from 'components/Home/encuentraDoctor/LazyEncuentraDoctor';
-import Footer from './components/reutilizables/Footer';
-import Header from './components/Home/Header';
-import Navbar from './components/reutilizables/Navbar';
-import LazyOpiniones from 'components/Home/opiniones/LazyOpiniones';
 import LazyPedirTurno from 'components/Home/pedirTurno/LazyPedirTurno';
-import Review from './components/Home/Review';
-import Uso from './components/Home/Uso';
+import LazyReview from 'components/Home/review/LazyReview';
+import LazyOpiniones from 'components/Home/opiniones/LazyOpiniones';
+import LazyFooter from 'components/reutilizables/footer/LazyFooter';
 import Turnero from './components/Turno/Turnero';
 import './scss/App.scss';
 import { app } from './config';
@@ -40,21 +40,21 @@ function App() {
         <Routes>
           <Route path='/' element={
             <>
-              <Navbar users={users} auth={auth} />
-              <Header especialistas={especialistas}/>
-              <Uso />
+              <LazyNavbar users={users} auth={auth} />
+              <LazyHeader especialistas={especialistas}/>
+              <LazyUso />
               <LazyEncuentraDoctor especialistas={especialistas} />
               <LazyPedirTurno />
-              <Review />
+              <LazyReview />
               <LazyOpiniones />
-              <Footer />
+              <LazyFooter />
             </>
           } />
           <Route path='/turno' element={
             <>
-              <Navbar users={users} auth={auth} />
+              <LazyNavbar users={users} auth={auth} />
               <Turnero especialidades={especialidades} especialistas={especialistas} auth={auth} turnos={turnos} />
-              <Footer />
+              <LazyFooter />
             </>
           } />
         </Routes>

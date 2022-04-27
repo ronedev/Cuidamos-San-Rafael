@@ -1,7 +1,7 @@
 import React from 'react'
 import verificadoIcon from 'img/Icons/verificado.png'
 import doctoraImg from 'img/doctoraEncuentraTuDoctor.webp'
-import DoctorCard from '../../reutilizables/DoctorCard'
+import DoctorCard from 'components/reutilizables/doctorCard/DoctorCard'
 
 const EncuentraTuDoctor = ({doctores}) => {
   return (

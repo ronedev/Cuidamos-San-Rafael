@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import menuIcon from './../../img/Icons/hamburger.png'
-import cerrarIcon from './../../img/Icons/cerrar.png'
-import { login, logout } from '../../funciones'
+import menuIcon from 'img/Icons/hamburger.png'
+import cerrarIcon from 'img/Icons/cerrar.png'
+import { login, logout } from 'funciones'
 
 const Navbar = ({ users, auth }) => {
     const [menuResponsiveVisible, setMenuResponsiveVisible] = useState(false)

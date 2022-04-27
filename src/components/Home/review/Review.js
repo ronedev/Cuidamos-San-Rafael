@@ -1,5 +1,5 @@
 import React from 'react'
-import InfoCard from '../reutilizables/InfoCard'
+import InfoCard from '../../reutilizables/InfoCard'
 
 const Review = () => {
     const info = [

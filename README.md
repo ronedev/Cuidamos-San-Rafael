@@ -2,6 +2,9 @@
 
 Proyecto ficticio realizado como práctica el cual consta de una asociación de doctores que trabajan vía online permitiendo a sus pacientes pedir turnos e información mediante la pagina.
 
+## ¿Qué aprendí con este proyecto? 🙇
+Aprendí mucho mas sobre lazy loading, como utilizar placeholders con react-content-loader y como crearlos con .[React Skeleton].(https://skeletonreact.com/)
+
 ## Construido con 🛠️
 
 * [React](https://es.reactjs.org/) - La libreria utilizada
